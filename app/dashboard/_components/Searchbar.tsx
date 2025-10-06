@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import React from "react";
 import {
   Dialog,
   DialogContent,
@@ -7,34 +9,55 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { FileChartColumnIncreasingIcon, SearchIcon } from "lucide-react";
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { SearchIcon, FileTextIcon, FileChartColumnIncreasingIcon } from "lucide-react";
 
 const Searchbar = () => {
   return (
-    <div>
+    <div className="flex items-center">
+      {/* Toolbar Search Trigger */}
       <Dialog>
-        <DialogTrigger asChild className="max-w-[80px]">
-          <Button className="w-100 " variant="outline">
-            <SearchIcon className="w-5 h-5" />
+        <DialogTrigger asChild>
+          <Button
+            variant="outline"
+            className="flex items-center justify-start gap-2 w-[280px] text-muted-foreground hover:text-foreground"
+          >
+            <SearchIcon className="w-4 h-4" />
+            <span className="text-sm">Search...</span>
+            <kbd className="ml-auto text-xs border rounded px-1 py-0.5 bg-muted">
+              Ctrl K
+            </kbd>
           </Button>
         </DialogTrigger>
-        <DialogContent>
+
+        {/* Search Dialog */}
+        <DialogContent className="sm:max-w-[600px] p-6">
           <DialogHeader>
-            <DialogTitle>
-              <Input placeholder="Search You need..." />
-            </DialogTitle>
-                  </DialogHeader>
-                  
+            <DialogTitle className="text-lg font-semibold">Search</DialogTitle>
+          </DialogHeader>
 
+          {/* Inner Search Input */}
+          <div className="mt-3">
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <SearchIcon className="w-4 h-4 text-muted-foreground mr-2" />
+              <Input
+                placeholder="Type to search..."
+                className="border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              />
+            </div>
+          </div>
 
-          <div className="flex items-center gap-3">
-            <FileChartColumnIncreasingIcon />
-            Journal
-                  </div>
-                  
-
-                  
+          {/* Example Search Results */}
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 hover:bg-muted p-2 rounded-md cursor-pointer">
+              <FileTextIcon className="w-4 h-4 text-muted-foreground" />
+              <span>My Notes</span>
+            </div>
+            <div className="flex items-center gap-3 hover:bg-muted p-2 rounded-md cursor-pointer">
+              <FileChartColumnIncreasingIcon className="w-4 h-4 text-muted-foreground" />
+              <span>Journal Entries</span>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
     </div>

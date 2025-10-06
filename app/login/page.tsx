@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Mail, Lock, LogIn } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -33,18 +34,16 @@ export default function LoginPage() {
       if (res.status === 200) {
         const { access, refresh } = res.data.token;
         const user = res.data.user;
-
-
+        toast.success("Login successful!");
         // Save token and user info in localStorage
         localStorage.setItem("accessToken", access);
         localStorage.setItem("refreshToken", refresh);
         localStorage.setItem("user", JSON.stringify(user));
-
-        alert(`Welcome back, ${user.username || "User"}!`);
         router.push("/dashboard");
       }
     } catch (err: any) {
       console.error("Login Error:", err);
+      toast.error("Login failed. Please check your credentials.");
       if (err.response?.status === 400) {
         alert(err.response.data.detail || "Invalid email or password.");
       } else {
@@ -166,7 +165,7 @@ export default function LoginPage() {
                 size="lg"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Signing in..." : "Sign in"}
+                {isSubmitting ? "Logging in..." : "Log in"}
               </Button>
             </form>
 
