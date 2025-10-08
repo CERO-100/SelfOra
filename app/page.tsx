@@ -50,7 +50,7 @@ export default function Home() {
               >
                 Pricing
               </a>
-              {/* <ThemeToggle /> */}
+              <ThemeToggle />
               <Link href="/login">
                 <Button variant="ghost" size="sm">
                   Log in
