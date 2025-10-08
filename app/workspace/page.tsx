@@ -1,21 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Clock, Coins, Flame, HelpCircle, Star, Target } from "lucide-react"
 import Link from "next/link"
-import {
-  Calendar,
-  HelpCircle,
-  ChevronLeft,
-  ChevronRight,
-  ArrowRight,
-  Clock,
-  Target,
-  Flame,
-  Star,
-  Coins,
-  Menu,
-} from "lucide-react"
-import { ThemeToggle } from "@/components/ui/ThemeToggle"
+import { useState } from "react"
+import { Menu } from 'lucide-react';
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
+
 
 type UserRole = "student" | "teacher" | "professional"
 
@@ -40,16 +30,8 @@ export default function HomePage() {
   const calendarDates = generateCalendarDates()
   const daysWithActivity = [1, 2, 4, 9, 10] // Indices of dates with green dots
 
-  return (
-    <div className="min-h-screen bg-background">
-
-
-      {/* Mobile Sidebar Overlay */}
-
-      {/* Main Content - with dynamic left margin based on sidebar state */}
+    return(
       <div>
-
-
         <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main Content - Left Side (2/3 width) */}
@@ -127,9 +109,11 @@ export default function HomePage() {
                 </div>
 
                 {/* Learning Module Card */}
-                <div className="bg-gradient-to-r from-amber-100 via-pink-100 to-purple-200 dark:from-amber-900/30 dark:via-pink-900/30 dark:to-purple-900/30 rounded-2xl p-4 sm:p-6 mb-6">
-<iframe className="aspect-video ..." src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-
+                <div>
+                  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-wide mb-2">
+                    TECH FOUNDATIONS
+                  </p>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-6">Developer Foundations</h3>
                 </div>
               </div>
             </div>
@@ -139,10 +123,10 @@ export default function HomePage() {
               {/* User Profile Card */}
               <div className="bg-card rounded-2xl p-6 shadow-sm border border-border">
                 <div className="flex items-start gap-4 mb-4">
-                  <img src="/spider.jpg" alt="Profile" className="w-16 h-16 rounded-full object-cover" />
+                  <img src="/professional-profile.png" alt="Profile" className="w-16 h-16 rounded-full object-cover" />
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg font-semibold text-foreground mb-1">Tito</h3>
-                    <button className="flex items-center gap-2 text-sm">
+                    <button className="flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors">
                       <Flame className="w-4 h-4" />
                       <span>Daily Rank --</span>
                       <ChevronRight className="w-4 h-4" />
@@ -308,6 +292,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </div>
-  )
+
+    )
 }

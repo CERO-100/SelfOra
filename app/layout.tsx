@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SiteHeader } from "@/components/site-header";
 
 
 const geistSans = Geist({
@@ -30,15 +33,29 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+            <SidebarProvider
+              style={
+                {
+                  "--sidebar-width": "calc(var(--spacing) * 72)",
+                  "--header-height": "calc(var(--spacing) * 12)",
+                } as React.CSSProperties
+              }
+            >
+                    <AppSidebar variant="inset" />
+                    <SidebarInset>
+                      <SiteHeader />
+
         <ThemeProvider
-          attribute="class"      // ✅ Needed for Tailwind dark mode
-          defaultTheme="system"  // Optional
-          enableSystem           // Optional
-          disableTransitionOnChange // Optional: prevents flash
+          attribute="class"
+          defaultTheme="system"
+          enableSystem         
+          disableTransitionOnChange
         >
         <Toaster position="bottom-right" />
         {children}
         </ThemeProvider>
+        </SidebarInset>
+        </SidebarProvider>
       </body>
     </html>
   );
