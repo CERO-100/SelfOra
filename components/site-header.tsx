@@ -3,9 +3,9 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Bell } from "lucide-react";
 import Link from "next/link";
-import { ThemeToggle } from "./ui/ThemeToggle";
 import Searchbar from "@/app/dashboard/_components/Searchbar";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "./ui/breadcrumb";
+import { ThemeToggle } from "./ui/ThemeToggle";
 
 export function SiteHeader() {
   return (
