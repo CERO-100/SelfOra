@@ -118,4 +118,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Your Next.js dev server
 ]
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "users.CustomUser"
+
+# MongoDB Configuration
+MONGODB_SETTINGS = {
+    'host': 'mongodb://localhost:27017/',
+    'db_name': 'selfora_db'
+}
+
+# Add pymongo to requirements.txt: pymongo==4.6.0
