@@ -10,6 +10,7 @@ import { ArrowLeft, Mail, Lock, LogIn } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
+import { toast } from "sonner"
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -25,9 +26,10 @@ export default function LoginPage() {
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
+    toast.success("Logged in successfully!")
 
     setIsSubmitting(false)
-    router.push("/home")
+    router.push("/dashboard/home")
   }
 
   return (
