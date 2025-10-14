@@ -1,0 +1,331 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.notion-editor-container {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border) / 0.6);
+  background: hsl(var(--card) / 0.8);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.notion-editor {
+  min-height: 300px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Slash Menu Container */
+.bn-slash-menu {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.15),
+    0 10px 10px -5px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  max-height: 420px;
+  overflow-y: auto;
+  width: 340px;
+  padding: 12px;
+  transform: translateZ(0);
+}
+
+/* Dark theme adjustments */
+.dark .bn-slash-menu {
+  background: rgba(23, 23, 23, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.5),
+    0 10px 10px -5px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Slash Menu Groups */
+.bn-slash-menu-group {
+  margin-bottom: 0.75rem;
+}
+
+.bn-slash-menu-group:last-child {
+  margin-bottom: 0;
+}
+
+.bn-slash-menu-group-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: hsl(var(--muted-foreground) / 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Slash Menu Items */
+.bn-slash-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  position: relative;
+  margin-bottom: 2px;
+  transform: translateZ(0);
+}
+
+.bn-slash-menu-item:hover {
+  background: hsl(var(--primary) / 0.08);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.1);
+}
+
+.bn-slash-menu-item[data-selected="true"] {
+  background: hsl(var(--primary) / 0.12);
+  color: hsl(var(--primary));
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 0 0 2px hsl(var(--primary) / 0.15),
+    0 4px 12px -2px hsl(var(--primary) / 0.2);
+}
+
+/* Icon styling */
+.bn-slash-menu-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .bn-slash-menu-item-icon {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bn-slash-menu-item:hover .bn-slash-menu-item-icon {
+  background: hsl(var(--primary) / 0.1);
+  border-color: hsl(var(--primary) / 0.2);
+  color: hsl(var(--primary));
+  transform: scale(1.1);
+}
+
+.bn-slash-menu-item[data-selected="true"] .bn-slash-menu-item-icon {
+  background: hsl(var(--primary) / 0.15);
+  border-color: hsl(var(--primary) / 0.3);
+  color: hsl(var(--primary));
+  transform: scale(1.1);
+}
+
+/* Content area */
+.bn-slash-menu-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.bn-slash-menu-item-title {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.25rem;
+  font-size: 14px;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.bn-slash-menu-item-hint {
+  font-size: 11px;
+  color: hsl(var(--muted-foreground) / 0.7);
+  line-height: 1.4;
+}
+
+/* Selected item styling */
+.bn-slash-menu-item[data-selected="true"] .bn-slash-menu-item-title {
+  color: hsl(var(--primary));
+  font-weight: 700;
+}
+
+.bn-slash-menu-item[data-selected="true"] .bn-slash-menu-item-hint {
+  color: hsl(var(--primary) / 0.7);
+}
+
+/* Scrollbar styling */
+.bn-slash-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bn-slash-menu::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.bn-slash-menu::-webkit-scrollbar-thumb {
+  background: hsl(var(--border) / 0.4);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.bn-slash-menu::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--border) / 0.6);
+}
+
+/* Animation for menu appearance */
+.bn-slash-menu {
+  animation: slideInScale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top center;
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Empty state */
+.bn-slash-menu-empty {
+  text-align: center;
+  padding: 3rem 0;
+  color: hsl(var(--muted-foreground) / 0.6);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* Search highlighting */
+.bn-slash-menu-item-title mark {
+  background: hsl(var(--primary) / 0.25);
+  color: hsl(var(--primary));
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.25rem;
+  font-weight: 700;
+}
+
+/* Keyboard shortcut styling */
+.bn-slash-menu-item-shortcut {
+  font-size: 10px;
+  color: hsl(var(--muted-foreground) / 0.6);
+  background: hsl(var(--muted) / 0.8);
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  font-family: ui-monospace, monospace;
+  border: 1px solid hsl(var(--border) / 0.4);
+  font-weight: 500;
+}
+
+/* Loading state */
+.bn-slash-menu-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  color: hsl(var(--muted-foreground) / 0.6);
+}
+
+.bn-slash-menu-loading-spinner {
+  animation: spin 1s linear infinite;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid hsl(var(--primary) / 0.3);
+  border-top-color: hsl(var(--primary));
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Focus states for accessibility */
+.bn-slash-menu-item:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px hsl(var(--card)),
+    0 0 0 4px hsl(var(--primary) / 0.5);
+}
+
+/* Group separator */
+.bn-slash-menu-group + .bn-slash-menu-group::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, hsl(var(--border) / 0.6), transparent);
+  margin: 0.75rem 0;
+}
+
+/* Hover effects for better interactivity */
+.bn-slash-menu-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  background: linear-gradient(to right, hsl(var(--primary) / 0.05), hsl(var(--primary) / 0.1));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: -1;
+}
+
+.bn-slash-menu-item:hover::before {
+  opacity: 1;
+}
+
+.bn-slash-menu-item[data-selected="true"]::before {
+  opacity: 1;
+  background: linear-gradient(to right, hsl(var(--primary) / 0.1), hsl(var(--primary) / 0.15));
+}
+
+/* Enhanced typography */
+.bn-slash-menu-item-title,
+.bn-slash-menu-item-hint {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .bn-slash-menu {
+    width: 320px;
+    padding: 10px;
+  }
+  
+  .bn-slash-menu-item {
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+  }
+  
+  .bn-slash-menu-item-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+/* Subtle pulse animation for selected item */
+.bn-slash-menu-item[data-selected="true"] {
+  animation: selectedPulse 2s ease-in-out infinite;
+}
+
+@keyframes selectedPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 2px hsl(var(--primary) / 0.15),
+      0 4px 12px -2px hsl(var(--primary) / 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 2px hsl(var(--primary) / 0.25),
+      0 4px 16px -2px hsl(var(--primary) / 0.3);
+  }
+}
