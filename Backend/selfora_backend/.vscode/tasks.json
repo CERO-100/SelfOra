@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "django makemigrations and migrate",
+			"type": "shell",
+			"command": "env\\Scripts\\python.exe manage.py makemigrations api && env\\Scripts\\python.exe manage.py migrate",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		}
+	]
+}

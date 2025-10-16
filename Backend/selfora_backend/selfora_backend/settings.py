@@ -115,7 +115,25 @@ REST_FRAMEWORK = {
 
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Your Next.js dev server
-]
+CORS_ALLOW_CREDENTIALS = True
+
+# Alternative: Use specific origins instead of CORS_ALLOW_ALL_ORIGINS
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+# ]
+
+# CORS Headers
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+
 AUTH_USER_MODEL = "users.User"
